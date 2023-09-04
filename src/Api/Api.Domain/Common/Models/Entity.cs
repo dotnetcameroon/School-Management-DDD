@@ -1,6 +1,6 @@
 namespace Api.Domain.Common.Models;
 
-public class Entity<TId>
+public abstract class Entity<TId>
 {
     public TId Id { get; protected set; }
     public Entity(TId id)

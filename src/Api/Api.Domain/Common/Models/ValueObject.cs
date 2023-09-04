@@ -2,6 +2,10 @@ namespace Api.Domain.Common.Models;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
+    protected ValueObject()
+    {
+    }
+
     public abstract IEnumerable<object> GetEqualityComparer();
 
     public static bool operator ==(ValueObject self, ValueObject other)
