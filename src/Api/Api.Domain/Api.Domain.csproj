@@ -4,4 +4,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="AnemicDomain\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AnemicDomain\" />
+  </ItemGroup>
 </Project>
