@@ -3,12 +3,13 @@
 public class Student
 {
     public int Id { get; set; }
-    public string Password { get; set; } = string.Empty;
     public string? FirstName { get; set; }
+    public string LastName { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
     public int Level { get; set; }
     public Specialisation? Specialisation { get; set; }
-    public string LastName { get; set; } = string.Empty;
     public DateTime DateOfBirth { get; set; }
 
-    public ICollection<Notation> Notations { get; set; } = null!;
+    public ICollection<SchoolClass> Classes { get; set; } = Array.Empty<SchoolClass>();
+    public ICollection<Notation> Notations { get; set; } = Array.Empty<Notation>();
 }
