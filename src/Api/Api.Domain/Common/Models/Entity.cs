@@ -3,7 +3,10 @@ namespace Api.Domain.Common.Models;
 public abstract class Entity<TId>
 {
     public TId Id { get; protected set; }
-    public Entity(TId id)
+    protected readonly List<IDomainEvent> _domainEvents = new();
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents;
+
+    protected Entity(TId id)
     {
         Id = id;
     }

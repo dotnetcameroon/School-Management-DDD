@@ -6,8 +6,16 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="AnemicDomain\" />
+    <None Remove="SchoolClassAggregate\" />
+    <None Remove="SchoolClassAggregate\ValueObjects\" />
+    <None Remove="SchoolClassAggregate\Entities\" />
+    <None Remove="Common\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AnemicDomain\" />
+    <Folder Include="SchoolClassAggregate\" />
+    <Folder Include="SchoolClassAggregate\ValueObjects\" />
+    <Folder Include="SchoolClassAggregate\Entities\" />
+    <Folder Include="Common\ValueObjects\" />
   </ItemGroup>
 </Project>
