@@ -1,5 +1,7 @@
 using System.Text;
 using Api.Domain.Common.Models;
+using Api.Domain.SchoolAggregate.Exceptions;
+
 namespace Api.Domain.SchoolAggregate.ValueObjects;
 
 public abstract class UserId : ValueObject
@@ -40,10 +42,10 @@ public abstract class UserId : ValueObject
     {
         string[] components = value.Split(_separator);
         if (components.Length != 4)
-            throw new Exception();
+            throw new InvalidIdentifierFormatException();
 
         if (!components[0].Equals(prefix))
-            throw new Exception();
+            throw new WrongPrefixException();
 
         string code = components[1];
         _ = int.TryParse(components[2], out int year);

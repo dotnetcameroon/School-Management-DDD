@@ -12,6 +12,7 @@
     <None Remove="AccademicAggregate\ValueObjects\" />
     <None Remove="AccademicAggregate\Enums\" />
     <None Remove="Common\Utilities\" />
+    <None Remove="SchoolAggregate\Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\ValueObjects\" />
@@ -20,5 +21,6 @@
     <Folder Include="SchoolAggregate\" />
     <Folder Include="AcademicAggregate\ValueObjects\" />
     <Folder Include="Common\Utilities\" />
+    <Folder Include="SchoolAggregate\Exceptions\" />
   </ItemGroup>
 </Project>

@@ -1,10 +1,12 @@
-﻿using Api.Application.Repositories.Base;
+﻿using System.Linq.Expressions;
+using Api.Application.Repositories.Base;
 using Api.Domain.Common.Models;
 
 namespace Api.Infrastructure.Persistance.Base;
 
 public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
     where TEntity : Entity<TId>
+    where TId : notnull
 {
     private readonly AppDbContext _context;
 
@@ -16,26 +18,41 @@ public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
     public async Task<TEntity?> AddAsync(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
+        await _context.SaveChangesAsync();
         return entity;
     }
 
-    public Task<int> DeleteAsync(Func<bool, TEntity> predicate)
+    public async Task<int> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
     {
-        throw new NotImplementedException();
+        return await _context
+            .Set<TEntity>()
+            .Where(predicate)
+            .ExecuteDeleteAsync();
     }
 
-    public Task<int> DeleteByIdAsync(TId id)
+    public async Task<int> DeleteByIdAsync(TId id)
     {
-        throw new NotImplementedException();
+        return await _context
+            .Set<TEntity>()
+            .Where(entity => id.Equals(entity.Id))
+            .ExecuteDeleteAsync();
     }
 
-    public Task<IReadOnlyList<TEntity>> GetAsync(Func<bool, TEntity> predicate)
+    public async Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
     {
-        throw new NotImplementedException();
+        var values = await _context
+            .Set<TEntity>()
+            .Where(predicate).ToArrayAsync();
+
+        return values;
     }
 
-    public Task<TEntity?> GetByIdAsync(TId id)
+    public async Task<TEntity?> GetByIdAsync(TId id)
     {
-        throw new NotImplementedException();
+        var entity = await _context
+            .Set<TEntity>()
+            .FirstOrDefaultAsync(entity => id.Equals(entity.Id));
+
+        return entity;
     }
 }

@@ -22,4 +22,15 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ValueObjectTests\" />
+    <None Remove="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ValueObjectTests\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Api\Api.Domain\Api.Domain.csproj" />
+  </ItemGroup>
 </Project>

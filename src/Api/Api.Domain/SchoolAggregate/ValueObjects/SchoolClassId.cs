@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Api.Domain.AcademicAggregate.Enums;
 using Api.Domain.Common.Models;
+using Api.Domain.SchoolAggregate.Exceptions;
 
 namespace Api.Domain.SchoolAggregate.ValueObjects;
 
@@ -63,10 +64,10 @@ public class SchoolClassId : ValueObject
     {
         string[] components = value.Split(_separator);
         if (components.Length != 4)
-            throw new Exception();
+            throw new InvalidIdentifierFormatException();
 
         if (!components[0].Equals(prefix))
-            throw new Exception();
+            throw new WrongPrefixException();
 
         _ = int.TryParse(components[1], out int specialization);
         _ = int.TryParse(components[2], out int year);

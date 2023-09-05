@@ -21,13 +21,13 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login(LoginQuery query)
     {
         var response = await _sender.Send(query);
-        return Ok(response);
+        return Ok(response.IsSuccess ? response.Value : response.Errors.First().Message);
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterCommand command)
     {
         var response = await _sender.Send(command);
-        return Ok(response);
+        return Ok(response.IsSuccess ? response.Value : response.Errors.First().Message);
     }
 }
