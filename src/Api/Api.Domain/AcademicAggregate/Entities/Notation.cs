@@ -25,6 +25,13 @@ public class Notation : Entity<NotationId>
         Grade = grade;
     }
 
+
+#pragma warning disable CS8618
+    private Notation()
+    {
+    }
+#pragma warning restore CS8618
+
     public bool UpdateValue(decimal? value)
     {
         // Verification checks

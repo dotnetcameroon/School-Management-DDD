@@ -17,6 +17,12 @@ public class Discipline : Entity<DisciplineId>
         Semester = semester;
     }
 
+#pragma warning disable CS8618
+    private Discipline()
+    {
+    }
+#pragma warning restore CS8618
+
     public static Discipline CreateUnique(
         string title,
         Semester semester,

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Api.Application.Authentication.Errors;
 using Api.Application.Authentication.Services;
-using Api.Application.Repositories.Base;
+using Api.Application.Repositories;
 using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate;
 using Api.Domain.SchoolAggregate.ValueObjects;
@@ -10,11 +10,11 @@ namespace Api.Application.Authentication.Login;
 
 public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<LoginResponse>>
 {
-    private readonly IRepository<User, UserId> _userRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IJwtTokenGenerator _jwt;
 
     public LoginQueryHandler(
-        IRepository<User, UserId> userRepository,
+        IUserRepository userRepository,
         IJwtTokenGenerator jwt)
     {
         _userRepository = userRepository;

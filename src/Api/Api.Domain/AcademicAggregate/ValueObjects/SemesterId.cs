@@ -17,6 +17,12 @@ public class SemesterId : ValueObject
         Value = $"{year}_{semesterNumber}";
     }
 
+#pragma warning disable CS8618
+    private SemesterId()
+    {
+    }
+#pragma warning restore CS8618
+
     public static SemesterId Create(
         int year,
         int semesterNumber)

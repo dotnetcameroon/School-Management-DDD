@@ -22,6 +22,12 @@ public class DisciplineId : ValueObject
         Value = $"{_code}_{_year}_{_salt}";
     }
 
+#pragma warning disable CS8618
+    private DisciplineId()
+    {
+    }
+#pragma warning restore CS8618
+
     public static DisciplineId CreateUnique(
         int year)
     {

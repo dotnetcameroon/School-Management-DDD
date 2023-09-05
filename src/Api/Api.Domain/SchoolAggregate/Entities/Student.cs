@@ -30,6 +30,10 @@ public class Student : User
         Specialization = specialization;
     }
 
+    private Student()
+    {
+    }
+
     internal void AddClass(SchoolClass @class)
     {
         _classes.Add(@class);

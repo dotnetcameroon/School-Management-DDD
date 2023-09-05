@@ -27,13 +27,15 @@
   <ItemGroup>
     <None Remove="Authentication\" />
     <None Remove="Persistance\" />
-    <None Remove="Persistance\Base\" />
-    <None Remove="Data\" />
+    <None Remove="Persistance\Configurations\" />
+    <None Remove="Persistance\Repositories\" />
+    <None Remove="Persistance\Repositories\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Persistance\" />
-    <Folder Include="Persistance\Base\" />
-    <Folder Include="Data\" />
+    <Folder Include="Persistance\Configurations\" />
+    <Folder Include="Persistance\Repositories\" />
+    <Folder Include="Persistance\Repositories\Base\" />
   </ItemGroup>
 </Project>

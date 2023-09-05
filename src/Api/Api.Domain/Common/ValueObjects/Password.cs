@@ -22,4 +22,9 @@ public class Password : ValueObject
     {
         yield return Hash;
     }
+
+    public static Password CreateFromHash(string hash)
+    {
+        return new(hash);
+    }
 }

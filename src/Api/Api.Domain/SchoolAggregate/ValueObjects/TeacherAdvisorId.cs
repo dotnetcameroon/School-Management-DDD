@@ -4,10 +4,14 @@ namespace Api.Domain.SchoolAggregate.ValueObjects;
 
 public class TeacherAdvisorId : UserId
 {
-    private const string _prefix = "Teacher";
+    public const string _prefix = "Teacher";
     protected override string Prefix => _prefix;
 
     public TeacherAdvisorId(string code, int year, int salt) : base(code, year, salt)
+    {
+    }
+
+    private TeacherAdvisorId()
     {
     }
 
@@ -21,7 +25,7 @@ public class TeacherAdvisorId : UserId
     }
 
     // The overload used to convert back values received from the database to the actual strongly typed Id
-    public static TeacherAdvisorId? Create(string value)
+    public static new TeacherAdvisorId? Create(string value)
     {
         var (year, code, salt) = Decrypt(value, _prefix);
         if (year == 0 || salt == 0)

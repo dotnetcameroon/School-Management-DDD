@@ -1,6 +1,5 @@
 ﻿using Api.Application.Repositories.Base;
 using Api.Domain.Common.Models;
-using Api.Infrastructure.Data;
 
 namespace Api.Infrastructure.Persistance.Base;
 

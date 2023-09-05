@@ -17,6 +17,10 @@ public class TeacherAdvisor : User
     {
     }
 
+    private TeacherAdvisor()
+    {
+    }
+
     public bool AssignClass(SchoolClass @class)
     {
         // Validation checks

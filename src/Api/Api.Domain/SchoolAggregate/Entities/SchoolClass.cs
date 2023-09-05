@@ -24,6 +24,10 @@ public class SchoolClass : Entity<SchoolClassId>
         Year = year;
     }
 
+    private SchoolClass()
+    {
+    }
+
     public static SchoolClass CreateUnique(
         Specialization specialization,
         TeacherAdvisor? teacherAdvisor,

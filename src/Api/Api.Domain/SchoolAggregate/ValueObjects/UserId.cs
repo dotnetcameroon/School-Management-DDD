@@ -4,8 +4,8 @@ namespace Api.Domain.SchoolAggregate.ValueObjects;
 
 public abstract class UserId : ValueObject
 {
-    protected const char _separator = '_';
     protected abstract string Prefix { get; }
+    protected const char _separator = '_';
     protected readonly int _year;
     protected readonly string _code;
     protected readonly int _salt;
@@ -30,6 +30,12 @@ public abstract class UserId : ValueObject
         //Value = $"{Prefix}{_separator}{_code}{_separator}{_year}{_separator}{_salt}";
     }
 
+#pragma warning disable CS8618
+    protected UserId()
+    {
+    }
+#pragma warning restore CS8618
+
     protected static (int year, string code, int salt) Decrypt(string value, string prefix)
     {
         string[] components = value.Split(_separator);
@@ -45,10 +51,19 @@ public abstract class UserId : ValueObject
 
         return (year, code, salt);
     }
+
     public override IEnumerable<object> GetEqualityComparer()
     {
         yield return _code;
         yield return _year;
         yield return _salt;
+    }
+
+    public static UserId Create(string value)
+    {
+        if (value.StartsWith(TeacherAdvisorId._prefix))
+            return TeacherAdvisorId.Create(value)!;
+        else
+            return StudentId.Create(value)!;
     }
 }

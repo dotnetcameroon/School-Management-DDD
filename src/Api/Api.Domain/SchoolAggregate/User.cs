@@ -25,4 +25,10 @@ public abstract class User : Entity<UserId>
         Password = password;
         Role = role;
     }
+
+#pragma warning disable CS8618
+    protected User()
+    {
+    }
+#pragma warning restore CS8618
 }

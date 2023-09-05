@@ -8,9 +8,9 @@ public class NotationId : ValueObject
 	private NotationId(Guid value)
 	{
 		Value = value;
-	}
+    }
 
-	public static NotationId CreateUnique()
+    public static NotationId CreateUnique()
 	{
 		return new(Guid.NewGuid());
 	}
@@ -18,7 +18,12 @@ public class NotationId : ValueObject
 	public static NotationId Create(string value)
 	{
 		return new(Guid.Parse(value));
-	}
+    }
+
+    public static NotationId Create(Guid value)
+    {
+        return new(value);
+    }
 
     public override IEnumerable<object> GetEqualityComparer()
     {
