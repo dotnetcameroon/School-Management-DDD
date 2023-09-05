@@ -5,7 +5,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="AnemicDomain\" />
     <None Remove="Common\ValueObjects\" />
     <None Remove="AccademicAggregate\" />
     <None Remove="AccademicAggregate\Entities\" />
@@ -15,7 +14,6 @@
     <None Remove="Common\Utilities\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AnemicDomain\" />
     <Folder Include="Common\ValueObjects\" />
     <Folder Include="AcademicAggregate\" />
     <Folder Include="AcademicAggregate\Entities\" />
