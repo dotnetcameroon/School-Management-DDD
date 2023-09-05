@@ -14,7 +14,7 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
         builder.Property(u => u.Id)
             .HasConversion(
                 id => id.Value,
-                value => UserId.Create(value)
+                value => UserId.Create(value)!
             );
 
         builder.Property(u => u.Password)

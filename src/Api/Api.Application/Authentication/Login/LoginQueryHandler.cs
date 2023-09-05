@@ -24,15 +24,12 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<LoginRespons
     public async Task<Result<LoginResponse>> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
         // Get the user from the database
-        UserId? identifier = request.Identifier switch
-        {
-            "" => TeacherAdvisorId.Create(request.Identifier),
-            _ => StudentId.Create(request.Identifier)
-        };
+        UserId? identifier = UserId.Create(request.Identifier);
 
         if (identifier is null)
             return Result.Fail(new UserNotFoundError(request.Identifier));
         User? user = await _userRepository.GetByIdAsync(identifier);
+
         if(user is null)
             return Result.Fail(new UserNotFoundError(request.Identifier));
 

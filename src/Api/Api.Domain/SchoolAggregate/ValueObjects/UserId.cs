@@ -61,11 +61,11 @@ public abstract class UserId : ValueObject
         yield return _salt;
     }
 
-    public static UserId Create(string value)
+    public static UserId? Create(string value)
     {
         if (value.StartsWith(TeacherAdvisorId._prefix))
-            return TeacherAdvisorId.Create(value)!;
+            return TeacherAdvisorId.Create(value);
         else
-            return StudentId.Create(value)!;
+            return StudentId.Create(value);
     }
 }
