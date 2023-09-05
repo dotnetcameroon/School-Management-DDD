@@ -19,7 +19,6 @@
     <Folder Include="AcademicAggregate\Entities\" />
     <Folder Include="SchoolAggregate\" />
     <Folder Include="AcademicAggregate\ValueObjects\" />
-    <Folder Include="AcademicAggregate\Enums\" />
     <Folder Include="Common\Utilities\" />
   </ItemGroup>
 </Project>

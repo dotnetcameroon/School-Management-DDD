@@ -1,4 +1,5 @@
 ﻿using Api.Domain.AcademicAggregate.Entities;
+using Api.Domain.AcademicAggregate.Enums;
 using Api.Domain.AcademicAggregate.ValueObjects;
 using Api.Domain.Common.Utilities;
 using Api.Domain.Common.ValueObjects;

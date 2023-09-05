@@ -1,4 +1,4 @@
-﻿using Api.Domain.AcademicAggregate.ValueObjects;
+﻿using Api.Domain.AcademicAggregate.Enums;
 using Api.Domain.Common.Models;
 
 namespace Api.Domain.SchoolAggregate.ValueObjects;
