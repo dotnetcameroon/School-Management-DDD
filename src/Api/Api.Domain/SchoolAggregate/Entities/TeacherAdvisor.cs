@@ -1,25 +1,20 @@
 ﻿using Api.Domain.AcademicAggregate.Entities;
-using Api.Domain.AcademicAggregate.ValueObjects;
-using Api.Domain.Common.Models;
+using Api.Domain.Common.Utilities;
+using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate.ValueObjects;
 
 namespace Api.Domain.SchoolAggregate.Entities;
 
 // Manages the students of his class
-public class TeacherAdvisor : Entity<TeacherAdvisorId>
+public class TeacherAdvisor : User
 {
-    private readonly List<SchoolClass> _classes = new();
-    public string? FirstName { get; }
-    public string LastName { get; }
-    public IReadOnlyList<SchoolClass> Classes => _classes.AsReadOnly();
-
     private TeacherAdvisor(
         TeacherAdvisorId id,
         string? firstName,
-        string lastName) : base(id)
+        string lastName,
+        Password password,
+        string role) : base(id, firstName, lastName, password, role)
     {
-        FirstName = firstName;
-        LastName = lastName;
     }
 
     public bool AssignClass(SchoolClass @class)
@@ -60,22 +55,30 @@ public class TeacherAdvisor : Entity<TeacherAdvisorId>
     public static TeacherAdvisor CreateUnique(
         string? firstName,
         string lastName,
-        int year)
+        Password password,
+        int year,
+        string role)
     {
         return new(
             TeacherAdvisorId.CreateUnique(year),
             firstName,
-            lastName);
+            lastName,
+            password,
+            Roles.Teacher);
     }
 
     public static TeacherAdvisor Create(
         TeacherAdvisorId id,
         string? firstName,
-        string lastName)
+        string lastName,
+        Password password,
+        string role)
     {
         return new(
             id,
             firstName,
-            lastName);
+            lastName,
+            password,
+            Roles.Teacher);
     }
 }

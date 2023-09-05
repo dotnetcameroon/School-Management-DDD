@@ -7,7 +7,7 @@ public class Student
     public string LastName { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
     public int Level { get; set; }
-    public Specialisation? Specialisation { get; set; }
+    public Specialization? Specialization { get; set; }
     public DateTime DateOfBirth { get; set; }
 
     public ICollection<SchoolClass> Classes { get; set; } = Array.Empty<SchoolClass>();

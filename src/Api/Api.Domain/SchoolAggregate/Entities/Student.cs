@@ -1,47 +1,40 @@
-﻿using Api.Domain.AcademicAggregate.ValueObjects;
-using Api.Domain.Common.Models;
+﻿using Api.Domain.AcademicAggregate.Entities;
+using Api.Domain.AcademicAggregate.ValueObjects;
+using Api.Domain.Common.Utilities;
+using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate.ValueObjects;
 
-namespace Api.Domain.AcademicAggregate.Entities;
+namespace Api.Domain.SchoolAggregate.Entities;
 
-public class Student : Entity<StudentId>
+public class Student : User
 {
-    private readonly List<SchoolClassId> _classes = new();
     private readonly List<Notation> _notations = new();
-
-    public string? FirstName { get; }
-    public string LastName { get; }
     public DateTime DateOfBirth { get; }
     public int Level { get; private set; }
-    public string Password { get; private set; }
     public Specialization? Specialization { get; private set; }
-
-    public IReadOnlyList<SchoolClassId> Classes => _classes.AsReadOnly();
     public IReadOnlyList<Notation> Notations => _notations.AsReadOnly();
 
     private Student(
         StudentId id,
         string? firstName,
         string lastName,
+        Password password,
         DateTime dateOfBirth,
         int level,
-        string password,
-        Specialization? specialization) : base(id)
+        Specialization? specialization,
+        string role) : base(id, firstName, lastName, password, role)
     {
-        FirstName = firstName;
-        LastName = lastName;
         DateOfBirth = dateOfBirth;
         Level = level;
-        Password = password;
         Specialization = specialization;
     }
 
-    internal void AddClass(SchoolClassId @class)
+    internal void AddClass(SchoolClass @class)
     {
         _classes.Add(@class);
     }
 
-    internal void RemoveClass(SchoolClassId @class)
+    internal void RemoveClass(SchoolClass @class)
     {
         _classes.Remove(@class);
     }
@@ -66,7 +59,7 @@ public class Student : Entity<StudentId>
         string lastName,
         DateTime dateOfBirth,
         int level,
-        string password,
+        Password password,
         int year,
         Specialization? specialization)
     {
@@ -74,10 +67,11 @@ public class Student : Entity<StudentId>
             StudentId.CreateUnique(year),
             firstName,
             lastName,
+            password,
             dateOfBirth,
             level,
-            password,
-            specialization);
+            specialization,
+            Roles.Student);
     }
 
     public static Student Create(
@@ -86,17 +80,17 @@ public class Student : Entity<StudentId>
         string lastName,
         DateTime dateOfBirth,
         int level,
-        string password,
-        int year,
+        Password password,
         Specialization? specialization)
     {
         return new(
             id,
             firstName,
             lastName,
+            password,
             dateOfBirth,
             level,
-            password,
-            specialization);
+            specialization,
+            Roles.Student);
     }
 }

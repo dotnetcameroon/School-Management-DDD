@@ -1,5 +1,4 @@
-﻿using Api.Domain.AcademicAggregate.Entities;
-using Api.Domain.AcademicAggregate.ValueObjects;
+﻿using Api.Domain.AcademicAggregate.ValueObjects;
 using Api.Domain.Common.Models;
 using Api.Domain.SchoolAggregate.ValueObjects;
 
@@ -40,14 +39,14 @@ public class SchoolClass : Entity<SchoolClassId>
     public bool AddStudent(Student student)
     {
         _students.Add(student);
-        student.AddClass(Id);
+        student.AddClass(this);
         return true;
     }
 
     public bool RemoveStudent(Student student)
     {
         _students.Add(student);
-        student.RemoveClass(Id);
+        student.RemoveClass(this);
         return true;
     }
 

@@ -2,16 +2,17 @@
 
 namespace Api.Domain.SchoolAggregate.ValueObjects;
 
-public class TeacherAdvisorId : UserId
+public class StudentId : UserId
 {
-    private const string _prefix = "Teacher";
+    private const string _prefix = "Std";
+
     protected override string Prefix => _prefix;
 
-    public TeacherAdvisorId(string code, int year, int salt) : base(code, year, salt)
+    public StudentId(string code, int year, int salt) : base(code, year, salt)
     {
     }
 
-    public static TeacherAdvisorId CreateUnique(
+    public static StudentId CreateUnique(
         int year)
     {
         return new(
@@ -20,8 +21,7 @@ public class TeacherAdvisorId : UserId
             Random.Shared.Next(10000, 99999));
     }
 
-    // The overload used to convert back values received from the database to the actual strongly typed Id
-    public static TeacherAdvisorId? Create(string value)
+    public static StudentId? Create(string value)
     {
         var (year, code, salt) = Decrypt(value, _prefix);
         if (year == 0 || salt == 0)
@@ -32,8 +32,9 @@ public class TeacherAdvisorId : UserId
 
     public override IEnumerable<object> GetEqualityComparer()
     {
-        yield return _code;
+        yield return _prefix;
         yield return _year;
+        yield return _code;
         yield return _salt;
     }
 }
