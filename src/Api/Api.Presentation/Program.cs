@@ -1,4 +1,5 @@
 using Api.Application;
+using Api.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplicationLayer();
+builder.Services
+    .AddApplicationLayer()
+    .AddInfrastructureLayer();
 
 var app = builder.Build();
 
