@@ -1,16 +1,17 @@
-﻿using Api.Domain.Common.Models;
+﻿using Api.Domain.AcademicAggregate.ValueObjects;
+using Api.Domain.Common.Models;
 
-namespace Api.Domain.SchoolClassAggregate.ValueObjects;
+namespace Api.Domain.SchoolAggregate.ValueObjects;
 
 public class SchoolClassId : ValueObject
 {
-    private readonly Specialisation _specialisation;
+    private readonly Specialization _specialisation;
     private readonly int _year;
     private readonly int _salt;
     public string Value { get; }
 
     private SchoolClassId(
-        Specialisation specialisation,
+        Specialization specialisation,
         int year,
         int salt)
     {
@@ -21,24 +22,13 @@ public class SchoolClassId : ValueObject
     }
 
     public static SchoolClassId CreateUnique(
-        Specialisation specialisation,
+        Specialization specialisation,
         int year)
     {
         return new(
             specialisation,
             year,
             Random.Shared.Next(10000, 99999));
-    }
-
-    public static SchoolClassId Create(
-        Specialisation specialisation,
-        int year,
-        int salt)
-    {
-        return new(
-            specialisation,
-            year,
-            salt);
     }
 
     public override IEnumerable<object> GetEqualityComparer()

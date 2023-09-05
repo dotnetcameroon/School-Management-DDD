@@ -6,16 +6,22 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="AnemicDomain\" />
-    <None Remove="SchoolClassAggregate\" />
-    <None Remove="SchoolClassAggregate\ValueObjects\" />
-    <None Remove="SchoolClassAggregate\Entities\" />
     <None Remove="Common\ValueObjects\" />
+    <None Remove="AccademicAggregate\" />
+    <None Remove="AccademicAggregate\Entities\" />
+    <None Remove="SchoolAggregate\" />
+    <None Remove="AccademicAggregate\ValueObjects\" />
+    <None Remove="AccademicAggregate\Enums\" />
+    <None Remove="Common\Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AnemicDomain\" />
-    <Folder Include="SchoolClassAggregate\" />
-    <Folder Include="SchoolClassAggregate\ValueObjects\" />
-    <Folder Include="SchoolClassAggregate\Entities\" />
     <Folder Include="Common\ValueObjects\" />
+    <Folder Include="AcademicAggregate\" />
+    <Folder Include="AcademicAggregate\Entities\" />
+    <Folder Include="SchoolAggregate\" />
+    <Folder Include="AcademicAggregate\ValueObjects\" />
+    <Folder Include="AcademicAggregate\Enums\" />
+    <Folder Include="Common\Utilities\" />
   </ItemGroup>
 </Project>
