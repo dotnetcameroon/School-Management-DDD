@@ -10,7 +10,7 @@ public class SchoolClass : Entity<SchoolClassId>
 
     public int Year { get; }
     public Specialization Specialization { get; }
-    public TeacherAdvisor? TeacherAdvisor { get; internal set; }
+    public TeacherAdvisor? TeacherAdvisor { get; private set; }
     public IReadOnlyList<Student> Students => _students.AsReadOnly();
 
     private SchoolClass(
@@ -19,6 +19,19 @@ public class SchoolClass : Entity<SchoolClassId>
         TeacherAdvisor? teacherAdvisor,
         int year) : base(id)
     {
+        TeacherAdvisor = teacherAdvisor;
+        Specialization = specialization;
+        Year = year;
+    }
+
+    private SchoolClass(
+        SchoolClassId id,
+        Specialization specialization,
+        TeacherAdvisor? teacherAdvisor,
+        IEnumerable<Student> students,
+        int year) : base(id)
+    {
+        _students = students.ToList();
         TeacherAdvisor = teacherAdvisor;
         Specialization = specialization;
         Year = year;
@@ -38,6 +51,11 @@ public class SchoolClass : Entity<SchoolClassId>
             specialization,
             teacherAdvisor,
             year);
+    }
+
+    public void ChangeTeacher(TeacherAdvisor? teacher)
+    {
+        TeacherAdvisor = teacher;
     }
 
     public bool AddStudent(Student student)
@@ -64,6 +82,21 @@ public class SchoolClass : Entity<SchoolClassId>
             schoolClassId,
             specialization,
             teacherAdvisor,
+            year);
+    }
+
+    public static SchoolClass Create(
+        SchoolClassId schoolClassId,
+        TeacherAdvisor? teacherAdvisor,
+        Specialization specialization,
+        IEnumerable<Student> students,
+        int year)
+    {
+        return new(
+            schoolClassId,
+            specialization,
+            teacherAdvisor,
+            students,
             year);
     }
 }

@@ -8,6 +8,7 @@ public interface IRepository<TEntity, TId>
 {
     Task<TEntity?> GetByIdAsync(TId id);
     Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<IReadOnlyList<TEntity>> GetAsync();
     Task<TEntity?> AddAsync(TEntity entity);
     Task<int> DeleteByIdAsync(TId id);
     Task<int> DeleteAsync(Expression<Func<TEntity, bool>> predicate);

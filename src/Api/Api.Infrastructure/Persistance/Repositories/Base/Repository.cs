@@ -4,11 +4,11 @@ using Api.Domain.Common.Models;
 
 namespace Api.Infrastructure.Persistance.Base;
 
-public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
+public class Repository<TEntity, TId> : IRepository<TEntity, TId>
     where TEntity : Entity<TId>
     where TId : notnull
 {
-    private readonly AppDbContext _context;
+    protected readonly AppDbContext _context;
 
     protected Repository(AppDbContext context)
     {
@@ -42,9 +42,21 @@ public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
     {
         var values = await _context
             .Set<TEntity>()
-            .Where(predicate).ToArrayAsync();
+            .AsNoTracking()
+            .Where(predicate)
+            .ToArrayAsync();
 
         return values;
+    }
+
+    public async Task<IReadOnlyList<TEntity>> GetAsync()
+    {
+        var entities = await _context
+            .Set<TEntity>()
+            .AsNoTracking()
+            .ToArrayAsync();
+
+        return entities;
     }
 
     public async Task<TEntity?> GetByIdAsync(TId id)

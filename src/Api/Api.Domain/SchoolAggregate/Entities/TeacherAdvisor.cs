@@ -25,7 +25,7 @@ public class TeacherAdvisor : User
     {
         // Validation checks
         _classes.Add(@class);
-        @class.TeacherAdvisor = this;
+        @class.ChangeTeacher(this);
         return true;
     }
 
@@ -33,7 +33,7 @@ public class TeacherAdvisor : User
     {
         // Verification checks
         _classes.Remove(@class);
-        @class.TeacherAdvisor = null;
+        @class.ChangeTeacher(null);
         return true;
     }
 

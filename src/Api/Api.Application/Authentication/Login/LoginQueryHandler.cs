@@ -2,6 +2,7 @@
 using Api.Application.Authentication.Errors;
 using Api.Application.Authentication.Services;
 using Api.Application.Repositories;
+using Api.Application.Repositories.Base;
 using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate;
 using Api.Domain.SchoolAggregate.ValueObjects;
