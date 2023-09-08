@@ -22,4 +22,12 @@ public class AdminId : UserId
 
         return new(code, year, salt);
     }
+
+    internal static AdminId CreateUnique(int year)
+    {
+        return new(
+            RandomCodeGenerator.GetRandomCode(3),
+            year,
+            Random.Shared.Next(10000, 99999));
+    }
 }

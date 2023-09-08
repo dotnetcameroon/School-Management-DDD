@@ -1,4 +1,5 @@
 ﻿using Api.Domain.AcademicAggregate.Enums;
+using Api.Domain.Common.Utilities;
 using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate.ValueObjects;
 
@@ -23,6 +24,20 @@ public class Admin : User
 
     private Admin()
     {
+    }
+
+    public static Admin CreateUnique(
+        string? firstName,
+        string lastName,
+        Password password,
+        int year)
+    {
+        return new(
+            AdminId.CreateUnique(year),
+            firstName,
+            lastName,
+            password,
+            Roles.Admin);
     }
 
     #region Classes Administration concerns
