@@ -41,7 +41,7 @@ public class SchoolClass : Entity<SchoolClassId>
     {
     }
 
-    public static SchoolClass CreateUnique(
+    internal static SchoolClass CreateUnique(
         Specialization specialization,
         TeacherAdvisor? teacherAdvisor,
         int year)
@@ -53,26 +53,7 @@ public class SchoolClass : Entity<SchoolClassId>
             year);
     }
 
-    public void ChangeTeacher(TeacherAdvisor? teacher)
-    {
-        TeacherAdvisor = teacher;
-    }
-
-    public bool AddStudent(Student student)
-    {
-        _students.Add(student);
-        student.AddClass(this);
-        return true;
-    }
-
-    public bool RemoveStudent(Student student)
-    {
-        _students.Add(student);
-        student.RemoveClass(this);
-        return true;
-    }
-
-    public static SchoolClass Create(
+    internal static SchoolClass Create(
         SchoolClassId schoolClassId,
         TeacherAdvisor? teacherAdvisor,
         Specialization specialization,
@@ -85,7 +66,7 @@ public class SchoolClass : Entity<SchoolClassId>
             year);
     }
 
-    public static SchoolClass Create(
+    internal static SchoolClass Create(
         SchoolClassId schoolClassId,
         TeacherAdvisor? teacherAdvisor,
         Specialization specialization,
@@ -98,5 +79,24 @@ public class SchoolClass : Entity<SchoolClassId>
             teacherAdvisor,
             students,
             year);
+    }
+
+    internal void ChangeTeacher(TeacherAdvisor? teacher)
+    {
+        TeacherAdvisor = teacher;
+    }
+
+    internal bool AddStudent(Student student)
+    {
+        _students.Add(student);
+        student.AddClass(this);
+        return true;
+    }
+
+    internal bool RemoveStudent(Student student)
+    {
+        _students.Add(student);
+        student.RemoveClass(this);
+        return true;
     }
 }

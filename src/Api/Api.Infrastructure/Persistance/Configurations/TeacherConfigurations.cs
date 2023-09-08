@@ -7,6 +7,9 @@ public class TeacherConfigurations : IEntityTypeConfiguration<TeacherAdvisor>
 {
     public void Configure(EntityTypeBuilder<TeacherAdvisor> builder)
     {
+        builder.HasMany(t => t.Classes)
+            .WithOne(c => c.TeacherAdvisor);
+
         builder.Navigation(c => c.Classes).Metadata.SetField("_classes");
         builder.Metadata.FindNavigation(nameof(TeacherAdvisor.Classes))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);

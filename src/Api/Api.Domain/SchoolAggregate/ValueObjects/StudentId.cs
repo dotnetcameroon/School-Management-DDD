@@ -5,7 +5,6 @@ namespace Api.Domain.SchoolAggregate.ValueObjects;
 public class StudentId : UserId
 {
     public const string _prefix = "Std";
-
     protected override string Prefix => _prefix;
 
     public StudentId(string code, int year, int salt) : base(code, year, salt)

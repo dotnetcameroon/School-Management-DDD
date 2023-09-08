@@ -1,11 +1,10 @@
 ﻿using Api.Application.UsersManagement.GetUsers;
+using Api.Presentation.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Presentation.Controllers;
 
-[ApiController]
-[Route("[controller]")]
-public class UsersController : ControllerBase
+public class UsersController : ApiController
 {
     private readonly ISender _sender;
 

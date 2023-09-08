@@ -12,7 +12,6 @@
   <ItemGroup>
     <None Remove="Authentication\" />
     <None Remove="Authentication\Login\" />
-    <None Remove="Authentication\Register\" />
     <None Remove="Authentication\Services\" />
     <None Remove="Repositories\" />
     <None Remove="Repositories\Base\" />
@@ -24,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Authentication\Login\" />
-    <Folder Include="Authentication\Register\" />
     <Folder Include="Authentication\Services\" />
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\Base\" />
