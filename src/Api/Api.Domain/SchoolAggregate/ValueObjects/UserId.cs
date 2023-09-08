@@ -65,7 +65,9 @@ public abstract class UserId : ValueObject
     {
         if (value.StartsWith(TeacherAdvisorId._prefix))
             return TeacherAdvisorId.Create(value);
-        else
+        else if (value.StartsWith(StudentId._prefix))
             return StudentId.Create(value);
+        else
+            return AdminId.Create(value);
     }
 }

@@ -14,12 +14,12 @@ public class AdminId : UserId
     }
 
     protected override string Prefix => _prefix;
-
-    internal static AdminId CreateUnique(int year)
+    public static new AdminId? Create(string value)
     {
-        return new(
-            RandomCodeGenerator.GetRandomCode(3),
-            year,
-            Random.Shared.Next(10000, 99999));
+        var (year, code, salt) = Decrypt(value, _prefix);
+        if (year == 0)
+            return null;
+
+        return new(code, year, salt);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Api.Domain.AcademicAggregate.Enums;
-using Api.Domain.Common.Utilities;
 using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate.ValueObjects;
 
@@ -10,8 +9,8 @@ public class Admin : User
     // The admin should be able to create and desolve classes, so he should have the list of all existing classes
     // Actually, from the user base class he already have all students
 
-    private readonly List<Student> _studens = new();
-    public IReadOnlyList<Student> Students => _studens.AsReadOnly();
+    private readonly List<Student> _students = new();
+    public IReadOnlyList<Student> Students => _students.AsReadOnly();
 
     public Admin(
         AdminId id,
@@ -25,36 +24,6 @@ public class Admin : User
     private Admin()
     {
     }
-
-    #region Admin Creation Concerns
-    public static Admin CreateUnique(
-        string? firstName,
-        string lastName,
-        Password password,
-        int nominationYear)
-    {
-        return new(
-            AdminId.CreateUnique(nominationYear),
-            firstName,
-            lastName,
-            password,
-            Roles.Admin);
-    }
-
-    public static Admin Create(
-        AdminId id,
-        string? firstName,
-        string lastName,
-        Password password)
-    {
-        return new(
-            id,
-            firstName,
-            lastName,
-            password,
-            Roles.Admin);
-    }
-    #endregion
 
     #region Classes Administration concerns
     public SchoolClass CreateUniqueClass(
@@ -147,13 +116,13 @@ public class Admin : User
             year,
             specialization);
 
-        _studens.Add(student);
+        _students.Add(student);
         return student;
     }
 
     public bool DismissStudent(StudentId studentId)
     {
-        var student = _studens.FirstOrDefault(s => s.Id == studentId);
+        var student = _students.FirstOrDefault(s => s.Id == studentId);
         if (student is null)
             return false;
 
