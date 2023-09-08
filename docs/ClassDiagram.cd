@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="A student has many notations, when a notation is related to only one student">
+    <Position X="6.744" Y="5.75" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="A -&gt; B: A has or is related to one B">
+    <Position X="1.366" Y="0.548" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="docs.Items.User">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAEAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Items\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="docs.Items.Student">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAQAAABAAAAAAAAAEA=</HashCode>
+      <FileName>Items\Student.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Specialization" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="docs.Items.TeacherAdvisor">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\TeacherAdvisor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="docs.Items.SchoolClass">
+    <Position X="10.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAABAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAEA=</HashCode>
+      <FileName>Items\SchoolClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TeacherAdvisor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="docs.Items.Notation">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAIAAAAAAAAAAAAAAAAAgAAEAAAA=</HashCode>
+      <FileName>Items\Notation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Subject" />
+      <Property Name="Grade" />
+      <Property Name="Student" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="docs.Items.Semester">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Semester.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="docs.Items.Discipline">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Discipline.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Semester" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="docs.Items.Grade">
+    <Position X="2.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQgAAAAEAAAAAAAAAAAAAAAAAAAAAACAACAAoAEAAEA=</HashCode>
+      <FileName>Items\Grade.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="docs.Items.Specialization">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAgAAAAAAAABA=</HashCode>
+      <FileName>Items\Specialization.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
