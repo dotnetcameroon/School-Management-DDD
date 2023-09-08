@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="A student has many notations, when a notation is related to only one student">
-    <Position X="6.744" Y="5.75" Height="0.75" Width="1.7" />
+    <Position X="6.78" Y="6.049" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="A -&gt; B: A has or is related to one B">
     <Position X="1.366" Y="0.548" Height="0.75" Width="1.7" />

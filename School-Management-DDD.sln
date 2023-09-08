@@ -7,27 +7,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{29AD2664-F8A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{94776445-1BAD-43E9-A8AD-22CEA531C94B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Application", "src\Api\Api.Application\Api.Application.csproj", "{3562C0F8-F604-4DDA-9E8A-B5AB9E4FC170}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Application", "src\Api\Api.Application\Api.Application.csproj", "{3562C0F8-F604-4DDA-9E8A-B5AB9E4FC170}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Domain", "src\Api\Api.Domain\Api.Domain.csproj", "{25023C64-6D6D-486A-A559-F507359F5C2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Domain", "src\Api\Api.Domain\Api.Domain.csproj", "{25023C64-6D6D-486A-A559-F507359F5C2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Infrastructure", "src\Api\Api.Infrastructure\Api.Infrastructure.csproj", "{8E875AED-A8EF-4217-92E6-1BA07CEBCA1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Infrastructure", "src\Api\Api.Infrastructure\Api.Infrastructure.csproj", "{8E875AED-A8EF-4217-92E6-1BA07CEBCA1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "src\Client\Client.csproj", "{9A030CF6-E78D-4C6A-9786-8997C84377FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "src\Client\Client.csproj", "{9A030CF6-E78D-4C6A-9786-8997C84377FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests", "tests\DomainTests\DomainTests.csproj", "{7765BBAB-1CD1-4323-9A95-742AAE1104E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTests", "tests\DomainTests\DomainTests.csproj", "{7765BBAB-1CD1-4323-9A95-742AAE1104E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Presentation", "src\Api\Api.Presentation\Api.Presentation.csproj", "{E9543BFF-22E6-4467-8BB0-7D715ACA747A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Presentation", "src\Api\Api.Presentation\Api.Presentation.csproj", "{E9543BFF-22E6-4467-8BB0-7D715ACA747A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{591CF3D6-3190-4AE6-AAAF-25F600B78642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docs", "docs\docs.csproj", "{A5BF6B20-8B75-4D18-8C03-5E30F0C53653}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3562C0F8-F604-4DDA-9E8A-B5AB9E4FC170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -54,6 +53,13 @@ Global
 		{E9543BFF-22E6-4467-8BB0-7D715ACA747A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9543BFF-22E6-4467-8BB0-7D715ACA747A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9543BFF-22E6-4467-8BB0-7D715ACA747A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5BF6B20-8B75-4D18-8C03-5E30F0C53653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5BF6B20-8B75-4D18-8C03-5E30F0C53653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5BF6B20-8B75-4D18-8C03-5E30F0C53653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5BF6B20-8B75-4D18-8C03-5E30F0C53653}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{94776445-1BAD-43E9-A8AD-22CEA531C94B} = {29AD2664-F8A0-4A65-81F9-38B9F748328B}
@@ -63,5 +69,8 @@ Global
 		{9A030CF6-E78D-4C6A-9786-8997C84377FF} = {29AD2664-F8A0-4A65-81F9-38B9F748328B}
 		{7765BBAB-1CD1-4323-9A95-742AAE1104E3} = {591CF3D6-3190-4AE6-AAAF-25F600B78642}
 		{E9543BFF-22E6-4467-8BB0-7D715ACA747A} = {94776445-1BAD-43E9-A8AD-22CEA531C94B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46AC0626-B1FA-4798-A15D-6EFBE8709432}
 	EndGlobalSection
 EndGlobal
