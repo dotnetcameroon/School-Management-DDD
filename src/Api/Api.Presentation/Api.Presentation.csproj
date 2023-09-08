@@ -27,8 +27,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Database\" />
+    <None Remove="Controllers\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
+    <Folder Include="Controllers\Base\" />
   </ItemGroup>
 </Project>

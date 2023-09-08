@@ -12,7 +12,6 @@
   <ItemGroup>
     <None Remove="Authentication\" />
     <None Remove="Authentication\Login\" />
-    <None Remove="Authentication\Register\" />
     <None Remove="Authentication\Services\" />
     <None Remove="Repositories\" />
     <None Remove="Repositories\Base\" />
@@ -20,11 +19,12 @@
     <None Remove="UsersManagement\" />
     <None Remove="UsersManagement\GetUsers\" />
     <None Remove="Common\" />
+    <None Remove="StudentsManagement\" />
+    <None Remove="StudentsManagement\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Authentication\Login\" />
-    <Folder Include="Authentication\Register\" />
     <Folder Include="Authentication\Services\" />
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\Base\" />
@@ -32,6 +32,8 @@
     <Folder Include="UsersManagement\" />
     <Folder Include="UsersManagement\GetUsers\" />
     <Folder Include="Common\" />
+    <Folder Include="StudentsManagement\" />
+    <Folder Include="StudentsManagement\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.15.2" />

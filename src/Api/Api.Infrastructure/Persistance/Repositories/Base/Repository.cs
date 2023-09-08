@@ -18,7 +18,7 @@ public class Repository<TEntity, TId> : IRepository<TEntity, TId>
     public async Task<TEntity?> AddAsync(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
-        await _context.SaveChangesAsync();
+        //await _context.SaveChangesAsync();
         return entity;
     }
 

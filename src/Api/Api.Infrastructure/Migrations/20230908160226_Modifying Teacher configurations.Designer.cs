@@ -3,6 +3,7 @@ using System;
 using Api.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230908160226_Modifying Teacher configurations")]
+    partial class ModifyingTeacherconfigurations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -61,9 +64,6 @@ namespace Api.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AdminId")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Specialization")
                         .HasColumnType("INTEGER");
 
@@ -71,8 +71,6 @@ namespace Api.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AdminId");
 
                     b.HasIndex("Specialization");
 
@@ -122,27 +120,15 @@ namespace Api.Infrastructure.Migrations
                     b.ToTable("SchoolClassStudent");
                 });
 
-            modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.Admin", b =>
-                {
-                    b.HasBaseType("Api.Domain.SchoolAggregate.User");
-
-                    b.HasDiscriminator().HasValue("Admin");
-                });
-
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.Student", b =>
                 {
                     b.HasBaseType("Api.Domain.SchoolAggregate.User");
-
-                    b.Property<string>("AdminId")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("Level")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("Specialization")
                         .HasColumnType("INTEGER");
-
-                    b.HasIndex("AdminId");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
@@ -167,10 +153,6 @@ namespace Api.Infrastructure.Migrations
 
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.SchoolClass", b =>
                 {
-                    b.HasOne("Api.Domain.SchoolAggregate.Entities.Admin", null)
-                        .WithMany("Classes")
-                        .HasForeignKey("AdminId");
-
                     b.HasOne("Api.Domain.SchoolAggregate.Entities.TeacherAdvisor", "TeacherAdvisor")
                         .WithMany("Classes")
                         .HasForeignKey("TeacherAdvisorId");
@@ -195,10 +177,6 @@ namespace Api.Infrastructure.Migrations
 
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.Student", b =>
                 {
-                    b.HasOne("Api.Domain.SchoolAggregate.Entities.Admin", null)
-                        .WithMany("Students")
-                        .HasForeignKey("AdminId");
-
                     b.OwnsMany("Api.Domain.AcademicAggregate.Entities.Notation", "Notations", b1 =>
                         {
                             b1.Property<Guid>("Id")
@@ -238,13 +216,6 @@ namespace Api.Infrastructure.Migrations
                         });
 
                     b.Navigation("Notations");
-                });
-
-            modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.Admin", b =>
-                {
-                    b.Navigation("Classes");
-
-                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.TeacherAdvisor", b =>

@@ -59,7 +59,7 @@ public class Student : User
         notation.UpdateValue(value);
     }
 
-    public static Student CreateUnique(
+    internal static Student CreateUnique(
         string? firstName,
         string lastName,
         DateTime dateOfBirth,

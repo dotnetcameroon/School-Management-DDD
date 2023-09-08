@@ -1,5 +1,6 @@
 using Api.Application;
 using Api.Infrastructure;
+using Api.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services
     .AddInfrastructureLayer();
 
 var app = builder.Build();
+
+await app.SeedDataAsync();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

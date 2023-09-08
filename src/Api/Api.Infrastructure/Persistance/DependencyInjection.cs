@@ -1,4 +1,5 @@
-﻿using Api.Application.Repositories;
+﻿using Api.Application.Common;
+using Api.Application.Repositories;
 using Api.Infrastructure.Persistance.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,8 +9,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddPersistence(this IServiceCollection services)
     {
-        //services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IAdminRepository, AdminRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<AppDbContext>(opt =>
         {
             //opt.UseInMemoryDatabase("appDb");
