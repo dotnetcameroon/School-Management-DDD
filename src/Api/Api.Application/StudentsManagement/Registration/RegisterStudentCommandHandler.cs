@@ -26,7 +26,7 @@ public class RegisterStudentCommandHandler : IRequestHandler<RegisterStudentComm
         if (adminId is null)
             return Result.Fail(new UserNotFoundError(request.AdminId));
 
-        Admin? admin = await _adminRepository.GetByIdAsync(adminId);
+        Admin? admin = await _adminRepository.GetByIdAsync(adminId, cancellationToken);
         if (admin is null)
             return Result.Fail(new UserNotFoundError(request.AdminId));
 

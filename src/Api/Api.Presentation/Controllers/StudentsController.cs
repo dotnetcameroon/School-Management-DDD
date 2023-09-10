@@ -1,5 +1,7 @@
 ﻿using Api.Application.StudentsManagement.Registration;
+using Api.Domain.Common.Utilities;
 using Api.Presentation.Controllers.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Presentation.Controllers;
@@ -14,6 +16,7 @@ public class StudentsController : ApiController
     }
 
     [HttpPost]
+    [Authorize(Policy = Policies.AdminOnly)]
     public async Task<IActionResult> RegisterStudent(RegisterStudentCommand command)
     {
         var response = await _sender.Send(command);

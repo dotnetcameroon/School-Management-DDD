@@ -15,55 +15,61 @@ public class Repository<TEntity, TId> : IRepository<TEntity, TId>
         _context = context;
     }
 
-    public async Task<TEntity?> AddAsync(TEntity entity)
+    public async Task<TEntity?> AddAsync(
+        TEntity entity,
+        CancellationToken cancellationToken = default)
     {
-        await _context.Set<TEntity>().AddAsync(entity);
+        await _context.Set<TEntity>().AddAsync(entity, cancellationToken);
         //await _context.SaveChangesAsync();
         return entity;
     }
 
-    public async Task<int> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<int> DeleteAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        CancellationToken cancellationToken = default)
     {
         return await _context
             .Set<TEntity>()
             .Where(predicate)
-            .ExecuteDeleteAsync();
+            .ExecuteDeleteAsync(cancellationToken);
     }
 
-    public async Task<int> DeleteByIdAsync(TId id)
+    public async Task<int> DeleteByIdAsync(TId id, CancellationToken cancellationToken = default)
     {
         return await _context
             .Set<TEntity>()
             .Where(entity => id.Equals(entity.Id))
-            .ExecuteDeleteAsync();
+            .ExecuteDeleteAsync(cancellationToken);
     }
 
-    public async Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<IReadOnlyList<TEntity>> GetAsync(
+        Expression<Func<TEntity, bool>> predicate,
+        CancellationToken cancellationToken = default)
     {
         var values = await _context
             .Set<TEntity>()
             .AsNoTracking()
             .Where(predicate)
-            .ToArrayAsync();
+            .ToArrayAsync(cancellationToken);
 
         return values;
     }
 
-    public async Task<IReadOnlyList<TEntity>> GetAsync()
+    public async Task<IReadOnlyList<TEntity>> GetAsync(CancellationToken cancellationToken = default)
     {
         var entities = await _context
             .Set<TEntity>()
             .AsNoTracking()
-            .ToArrayAsync();
+            .ToArrayAsync(cancellationToken);
 
         return entities;
     }
 
-    public async Task<TEntity?> GetByIdAsync(TId id)
+    public async Task<TEntity?> GetByIdAsync(TId id, CancellationToken cancellationToken = default)
     {
         var entity = await _context
             .Set<TEntity>()
-            .FirstOrDefaultAsync(entity => id.Equals(entity.Id));
+            .FirstOrDefaultAsync(entity => id.Equals(entity.Id), cancellationToken = default);
 
         return entity;
     }

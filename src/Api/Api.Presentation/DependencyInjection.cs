@@ -4,27 +4,31 @@ using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate.Entities;
 using Api.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace Api.Presentation;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddAuth(this IServiceCollection services)
+    public static IServiceCollection AddPresentation(this IServiceCollection services)
     {
-        services.AddAuthentication()
-            .AddJwtBearer(opt =>
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen(opt =>
+        {
+            opt.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
             {
-                opt.Audience = "";
-                opt.ClaimsIssuer = "";
-                opt.Validate();
+                In = ParameterLocation.Header,
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey
             });
-
+        });
         return services;
     }
 
-    public static async Task<WebApplication> SeedDataAsync(this WebApplication app)
+    public static async Task<IApplicationBuilder> SeedDataAsync(this IApplicationBuilder app)
     {
-        using var scope = app.Services.CreateAsyncScope();
+        using var scope = app.ApplicationServices.CreateAsyncScope();
         var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
