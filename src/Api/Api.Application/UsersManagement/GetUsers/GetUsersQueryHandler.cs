@@ -14,7 +14,7 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, Result<PagedL
 
     public async Task<Result<PagedList<UserResponse>>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
-        var domainUsers = await _userRepository.GetAsync();
+        var domainUsers = await _userRepository.GetAsync(cancellationToken);
         var users = domainUsers.Select(
             u => new UserResponse(
                 u.Id.Value,

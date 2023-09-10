@@ -2,7 +2,6 @@
 using Api.Application.Authentication.Errors;
 using Api.Application.Authentication.Services;
 using Api.Application.Repositories;
-using Api.Application.Repositories.Base;
 using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate;
 using Api.Domain.SchoolAggregate.ValueObjects;
@@ -29,7 +28,7 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<LoginRespons
 
         if (identifier is null)
             return Result.Fail(new UserNotFoundError(request.Identifier));
-        User? user = await _userRepository.GetByIdAsync(identifier);
+        User? user = await _userRepository.GetByIdAsync(identifier, cancellationToken);
 
         if(user is null)
             return Result.Fail(new UserNotFoundError(request.Identifier));
@@ -42,6 +41,7 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<LoginRespons
         {
             new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
             new Claim(ClaimTypes.NameIdentifier, user.Id.Value),
+            new Claim(ClaimTypes.Role, user.Role)
         });
 
         // Return back the token to the user
