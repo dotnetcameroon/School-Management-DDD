@@ -21,5 +21,10 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
             .HasConversion(
                 pwd => pwd.Hash,
                 hash => Password.CreateFromHash(hash));
+
+        builder.Property(u => u.FirstName)
+            .IsRequired(false);
+
+        builder.Property(u => u.LastName);
     }
 }
