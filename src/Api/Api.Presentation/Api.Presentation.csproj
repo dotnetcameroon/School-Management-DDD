@@ -9,6 +9,8 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
+    <PackageReference Include="Carter" Version="7.2.0" />
+    <!-- <PackageReference Include="FastEndpoints" Version="5.17.1.1" /> -->
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
@@ -26,11 +28,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Database\" />
-    <None Remove="Controllers\Base\" />
+    <None Remove="Endpoints\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\" />
-    <Folder Include="Controllers\Base\" />
+    <Folder Include="Endpoints\Users\" />
   </ItemGroup>
 </Project>

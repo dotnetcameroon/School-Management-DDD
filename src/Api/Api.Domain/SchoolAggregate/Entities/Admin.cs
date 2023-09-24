@@ -11,7 +11,10 @@ public class Admin : User
     // Actually, from the user base class he already have all students
 
     private readonly List<Student> _students = new();
+    private readonly List<TeacherAdvisor> _teachers = new();
+
     public IReadOnlyList<Student> Students => _students.AsReadOnly();
+    public IReadOnlyList<TeacherAdvisor> Teachers => _teachers.AsReadOnly();
 
     public Admin(
         AdminId id,
@@ -149,6 +152,35 @@ public class Admin : User
         while(student.Classes.Any())
             student.RemoveClass(student.Classes[student.Classes.Count - 1]);
 
+        return true;
+    }
+    #endregion
+
+    #region Teacher administration concerns
+
+    public TeacherAdvisor RegisterTeacher(
+        string? firstName,
+        string lastName,
+        Password password,
+        int year)
+    {
+        var teacher = TeacherAdvisor.CreateUnique(
+            firstName,
+            lastName,
+            password,
+            year);
+
+        _teachers.Add(teacher);
+        return teacher;
+    }
+
+    public bool DismissTeacher(TeacherAdvisorId teacherId)
+    {
+        var @class = _classes.Where(c => c.TeacherAdvisor?.Id == teacherId);
+        if (@class is null)
+            return false;
+
+        //@class.Last().RemoveTeacher();
         return true;
     }
     #endregion
