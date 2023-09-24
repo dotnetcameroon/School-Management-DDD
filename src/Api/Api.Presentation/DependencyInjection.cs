@@ -3,6 +3,7 @@ using Api.Application.Common;
 using Api.Domain.Common.ValueObjects;
 using Api.Domain.SchoolAggregate.Entities;
 using Api.Infrastructure.Persistance;
+using Api.Presentation.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -13,10 +14,11 @@ public static class DependencyInjection
     public static IServiceCollection AddPresentation(this IServiceCollection services)
     {
         services.AddControllers();
+        services.AddScoped<RegisterUserIdMiddleware>();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(opt =>
         {
-            opt.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+            opt.AddSecurityDefinition("oauth", new OpenApiSecurityScheme()
             {
                 In = ParameterLocation.Header,
                 Name = "Authorization",

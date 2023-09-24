@@ -60,8 +60,7 @@ public class TeacherAdvisor : User
         string? firstName,
         string lastName,
         Password password,
-        int year,
-        string role)
+        int year)
     {
         return new(
             TeacherAdvisorId.CreateUnique(year),
@@ -71,12 +70,11 @@ public class TeacherAdvisor : User
             Roles.Teacher);
     }
 
-    public static TeacherAdvisor Create(
+    internal static TeacherAdvisor Create(
         TeacherAdvisorId id,
         string? firstName,
         string lastName,
-        Password password,
-        string role)
+        Password password)
     {
         return new(
             id,

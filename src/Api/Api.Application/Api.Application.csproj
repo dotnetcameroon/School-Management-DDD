@@ -21,6 +21,10 @@
     <None Remove="Common\" />
     <None Remove="StudentsManagement\" />
     <None Remove="StudentsManagement\Registration\" />
+    <None Remove="TeachersManagement\" />
+    <None Remove="TeachersManagement\Registration\" />
+    <None Remove="ClassesManagement\" />
+    <None Remove="ClassesManagement\AssignTeacher\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
@@ -34,9 +38,14 @@
     <Folder Include="Common\" />
     <Folder Include="StudentsManagement\" />
     <Folder Include="StudentsManagement\Registration\" />
+    <Folder Include="TeachersManagement\" />
+    <Folder Include="TeachersManagement\Registration\" />
+    <Folder Include="ClassesManagement\" />
+    <Folder Include="ClassesManagement\AssignTeacher\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.15.2" />
     <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
   </ItemGroup>
 </Project>

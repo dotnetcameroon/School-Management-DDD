@@ -3,6 +3,7 @@ using System;
 using Api.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230911115840_Firstname And Lastname")]
+    partial class FirstnameAndLastname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -151,23 +154,12 @@ namespace Api.Infrastructure.Migrations
 
                     b.HasIndex("AdminId");
 
-                    b.ToTable("Users", t =>
-                        {
-                            t.Property("AdminId")
-                                .HasColumnName("Student_AdminId");
-                        });
-
                     b.HasDiscriminator().HasValue("Student");
                 });
 
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.TeacherAdvisor", b =>
                 {
                     b.HasBaseType("Api.Domain.SchoolAggregate.User");
-
-                    b.Property<string>("AdminId")
-                        .HasColumnType("TEXT");
-
-                    b.HasIndex("AdminId");
 
                     b.HasDiscriminator().HasValue("TeacherAdvisor");
                 });
@@ -258,20 +250,11 @@ namespace Api.Infrastructure.Migrations
                     b.Navigation("Notations");
                 });
 
-            modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.TeacherAdvisor", b =>
-                {
-                    b.HasOne("Api.Domain.SchoolAggregate.Entities.Admin", null)
-                        .WithMany("Teachers")
-                        .HasForeignKey("AdminId");
-                });
-
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.Admin", b =>
                 {
                     b.Navigation("Classes");
 
                     b.Navigation("Students");
-
-                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("Api.Domain.SchoolAggregate.Entities.TeacherAdvisor", b =>
